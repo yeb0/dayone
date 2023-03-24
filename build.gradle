@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.10'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'zerobase'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    runtimeOnly 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // 추가
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.7.2' // 스크래핑 하기 위함
+    /**
+     * 스크래핑 할 때, 기억해야할 점 !!
+     * 내 서비스의 어떻게 돌아가고 있는지 잘 파악
+     * 📌내 서비스가 연동되어 돌아가는 다른 서비스의 영향도 파악도 굉장히 중요한 이슈 중 하나
+     *
+     */
+
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
