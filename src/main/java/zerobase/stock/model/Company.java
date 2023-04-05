@@ -1,7 +1,9 @@
 package zerobase.stock.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 굳이 entity 냅두고 따로 model 로 빼서 쓰는 이유?
@@ -51,7 +53,9 @@ import lombok.Data;
  */
 
 @Data
-@Builder
+//@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Company {
 
     private String ticker;

@@ -70,10 +70,7 @@ public class YahooFinanceScraper implements Scraper{
                     throw new RuntimeException("Unexpected Month enum value -> " + splits[0]);
                 }
 
-                dividends.add(Dividend.builder()
-                                .date(LocalDateTime.of(year, month, day, 0, 0))
-                                .dividend(dividend)
-                                .build());
+                dividends.add(new Dividend(LocalDateTime.of(year, month, day, 0, 0), dividend));
 
 //                System.out.println(year + "/" + month + "/" + day + " --> " + dividend);
 
@@ -97,11 +94,7 @@ public class YahooFinanceScraper implements Scraper{
             Document document = Jsoup.connect(url).get();
             Element titleEle = document.getElementsByTag("h1").get(0);
             String title = titleEle.text().split(" - ")[1].trim(); // 무조건 이렇게 해라! 는 아님. 회사의 데이터 특성 상 다 다를 수도 있음 일단은 강의에선 이렇게 해서 데이터를 추출함
-
-            return Company.builder()
-                    .ticker(ticker)
-                    .name(title)
-                    .build();
+            return new Company(ticker, title);
 
         } catch (IOException e) {
             e.printStackTrace();
