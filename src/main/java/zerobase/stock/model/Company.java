@@ -1,7 +1,6 @@
 package zerobase.stock.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -52,8 +51,8 @@ import lombok.NoArgsConstructor;
  * null 값을 넣더라도 그냥 안 넣어버리면 그만. 내가 넣고 싶은 값만 초기화시키면 되는 것
  */
 
+
 @Data
-//@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Company {

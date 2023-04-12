@@ -1,13 +1,11 @@
 package zerobase.stock.persist.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import zerobase.stock.model.Company;
 
 import javax.persistence.*;
 
-@Entity(name = "COMPANY") // table name = COMPANY
+@Entity(name = "COMPANY")
 @Getter
 @ToString
 @NoArgsConstructor
@@ -17,13 +15,15 @@ public class CompanyEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     @Column(unique = true)
     private String ticker;
-
-    private String name; // 회사명
 
     public CompanyEntity(Company company) {
         this.ticker = company.getTicker();
         this.name = company.getName();
     }
+
 }
+
